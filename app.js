@@ -5,13 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
-var akun = require('./routes/akun');
-var admin = require('./routes/admin');
-var paket = require('./routes/pesanan_paket');
-var rental = require('./routes/pesanan_rental');
-var bayar = require('./routes/bayar');
-var bayar_rental = require('./routes/rentals');
+var pendapatan = require('./routes/pendapatan');
+var pengeluaran = require('./routes/pengeluaran');
+var saldo = require('./routes/saldo');
+var sementara = require('./routes/sementara');
+var dompet = require('./routes/dompet');
+var catatan = require('./routes/catatan');
 
 var app = express();
 
@@ -27,19 +26,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/beranda', index);
-app.use('/users', users);
-app.use('/akun', akun);
-app.use('/akun/{id}', akun);
-app.use('/admin', admin);
-app.use('/admin/{id}', admin);
-app.use('/paket', paket);
-app.use('/paket/{id}', paket);
-app.use('/rental', rental);
-app.use('/rental/{id}', rental);
-app.use('/bayar', bayar);
-app.use('/bayar/{id}', bayar);
-app.use('/rentalbayar/', bayar_rental);
-app.use('/rentalbayar/{id}', bayar_rental);
+
+app.use('/pendapatan', pendapatan)
+app.use('/pengeluaran', pengeluaran)
+app.use('/saldo', saldo)
+app.use('/sementara', sementara)
+app.use('/dompet', dompet)
+app.use('/catatan', catatan)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
