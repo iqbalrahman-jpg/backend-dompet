@@ -14,6 +14,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  const id = req.params.id;
   const query = "SELECT * FROM dompet WHERE id = ?";
   connection.query(query, [id], (err, results) => {
     if (err) {
