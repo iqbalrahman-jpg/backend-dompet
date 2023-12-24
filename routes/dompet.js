@@ -13,6 +13,17 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/:id", (req, res) => {
+  const query = "SELECT * FROM dompet WHERE id = ?";
+  connection.query(query, [id], (err, results) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      return;
+    }
+    res.json(results);
+  });
+});
+
 router.post("/", (req, res) => {
   const { jenis, deskripsi } = req.body;
   const query =
